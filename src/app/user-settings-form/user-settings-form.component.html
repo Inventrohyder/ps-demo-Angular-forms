@@ -1,6 +1,6 @@
 <div class="container">
     <h2>User Settings</h2>
-    <form>
+    <form #form="ngForm">
 
         <div class="form-group">
             <label for="name">Name</label>
@@ -54,3 +54,5 @@
         <button class="btn btn-primary">Send</button>
     </form>
 </div>
+
+{{ form | json }}
