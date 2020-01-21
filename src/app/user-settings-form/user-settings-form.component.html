@@ -1,24 +1,19 @@
 <div class="container">
     <h2>User Settings</h2>
 
-    <!-- 
-        Turn on the browser's native validation using the directive `ngNativeValidate`.
-        It is normally off by default because of the differences in validation by 
-        different browsers.
-    -->
-    <form #form="ngForm" ngNativeValidate>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
 
         <div class="form-group">
             <label for="name">Name</label>
             <input id="name" name="name" class="form-control" [(ngModel)]="userSettings.name" required
-                #nameField="ngModel" />
+                #nameField="ngModel" [class.field-error]="form.submitted && nameField.invalid" />
             <!-- 
                 The pound symbol and a names creates a template variable we can reference later.
                 By referencing ngModel, we get access to the ngModel properties of the control
              -->
         </div>
 
-        <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+        <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
             Enter a name
         </div>
 
