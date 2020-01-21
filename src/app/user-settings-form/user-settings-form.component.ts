@@ -20,6 +20,8 @@ export class UserSettingsFormComponent implements OnInit {
     notes: null
   }
 
+  singleModel = "On";
+
   // Using a copy of the original user settings to avoid data corruption
   // in case the user cancels the form or hits the back button without 
   // completing the form

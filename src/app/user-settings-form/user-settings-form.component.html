@@ -13,10 +13,14 @@
                 By referencing ngModel, we get access to the ngModel properties of the control
              -->
         </div>
-
         <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
             Enter a name
         </div>
+
+        <button type="button" class="btn btn-primary" [(ngModel)]="singleModel" btnCheckbox btnCheckboxTrue="On"
+            btnCheckboxFalse="Off" name="singleModel">
+            {{ singleModel }}
+        </button>
 
         <div class="form-check form-group">
             <input class="form-check-input" type="checkbox" id="emailoffers" name="emailoffers"
