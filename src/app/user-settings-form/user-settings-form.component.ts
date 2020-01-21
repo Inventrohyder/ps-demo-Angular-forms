@@ -22,6 +22,8 @@ export class UserSettingsFormComponent implements OnInit {
 
   startDate: Date;
   startTime: Date;
+  userRating = 0;
+  maxRating = 10;
 
   // Using a copy of the original user settings to avoid data corruption
   // in case the user cancels the form or hits the back button without 
