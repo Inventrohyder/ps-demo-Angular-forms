@@ -24,7 +24,13 @@
                 <!-- For Date pickers use the directive bsDatepicker -->
         </div>
 
-        Start Date: {{ startDate }}
+        <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <timepicker [(ngModel)]="startTime" name="startTime" id="startTime">
+            </timepicker>
+        </div>
+
+        Start Time: {{ startTime }}
 
         <div class="form-check form-group">
             <input class="form-check-input" type="checkbox" id="emailoffers" name="emailoffers"
