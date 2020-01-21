@@ -10,7 +10,7 @@ export class UserSettingsFormComponent implements OnInit {
 
   userSettings: UserSettings = {
     name: 'Milton', 
-    emailOffers: true,
+    emailoffers: true,
     interfaceStyle: 'dark',
     subscriptionType: 'Annual',
     notes: 'here are some notes...'
