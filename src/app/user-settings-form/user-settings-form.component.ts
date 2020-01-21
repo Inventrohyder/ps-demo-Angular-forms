@@ -20,6 +20,11 @@ export class UserSettingsFormComponent implements OnInit {
     notes: null
   }
 
+  startDate: Date;
+  startTime: Date;
+  userRating = 0;
+  maxRating = 10;
+
   // Using a copy of the original user settings to avoid data corruption
   // in case the user cancels the form or hits the back button without 
   // completing the form
@@ -32,6 +37,9 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit() {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+
+    this.startDate = new Date();
+    this.startTime = new Date();
   }
 
   onBlur(field: NgModel) {
@@ -45,16 +53,18 @@ export class UserSettingsFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.valid);
-    if (form.valid) {
-      this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-        result => console.log('succes: ', result),
-        error => this.onHttpError(error)
-      );
-    } else {
-      this.postError = true;
-      this.postErrorMessage = "Please fix the above errors."
-    }
+    console.log('in onSubmit: ', form.value);
+
+
+    // if (form.valid) {
+    //   this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+    //     result => console.log('succes: ', result),
+    //     error => this.onHttpError(error)
+    //   );
+    // } else {
+    //   this.postError = true;
+    //   this.postErrorMessage = "Please fix the above errors."
+    // }
   }
 
 }
