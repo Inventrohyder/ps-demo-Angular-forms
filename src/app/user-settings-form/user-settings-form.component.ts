@@ -20,7 +20,7 @@ export class UserSettingsFormComponent implements OnInit {
     notes: null
   }
 
-  singleModel = "On";
+  startDate: Date;
 
   // Using a copy of the original user settings to avoid data corruption
   // in case the user cancels the form or hits the back button without 
@@ -34,6 +34,8 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit() {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+
+    this.startDate = new Date();
   }
 
   onBlur(field: NgModel) {
