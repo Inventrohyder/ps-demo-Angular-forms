@@ -23,6 +23,8 @@ export class UserSettingsFormComponent implements OnInit {
   // in case the user cancels the form or hits the back button without 
   // completing the form
   userSettings: UserSettings = { ...this.originalUserSettings };
+  postError = false;
+  postErrorMessage = '';
 
   constructor(private dataService: DataService) { }
 
@@ -33,12 +35,23 @@ export class UserSettingsFormComponent implements OnInit {
     console.log('in onBlur: ', field.valid)
   }
 
+  onHttpError(errorResponse: any) {
+    console.log('error: ', errorResponse);
+    this.postError = true;
+    this.postErrorMessage = errorResponse.error.errorMessage;
+  }
+
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
-    this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-      result => console.log('succes: ', result),
-      error => console.log('error: ', error)
-    );
+    if (form.valid) {
+      this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+        result => console.log('succes: ', result),
+        error => this.onHttpError(error)
+      );
+    } else {
+      this.postError = true;
+      this.postErrorMessage = "Please fix the above errors."
+    }
   }
 
 }
