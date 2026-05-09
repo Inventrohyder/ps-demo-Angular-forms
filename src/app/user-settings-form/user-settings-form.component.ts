@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-user-settings-form',
   templateUrl: './user-settings-form.component.html',
-  styleUrls: ['./user-settings-form.component.css']
+  styleUrls: ['./user-settings-form.component.css'],
+  standalone: false
 })
 export class UserSettingsFormComponent implements OnInit {
 
@@ -24,6 +25,7 @@ export class UserSettingsFormComponent implements OnInit {
   startTime: Date;
   userRating = 0;
   maxRating = 10;
+  isReadonly = false;
 
   // Using a copy of the original user settings to avoid data corruption
   // in case the user cancels the form or hits the back button without 

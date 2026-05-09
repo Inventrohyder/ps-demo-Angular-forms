@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="text" placeholder="Start Date" class="form-control" [(ngModel)]=startDate name="startDate"
+            <input type="text" placeholder="Start Date" class="form-control" [(ngModel)]="startDate" name="startDate"
                 id="startDate" bsDaterangepicker>
             <!-- For Date pickers use the directive bsDatepicker -->
         </div>
@@ -47,16 +47,16 @@
             </label>
         </div>
 
-        <p>User Interface Style</p>
+        <p id="interfaceStyleLabel">User Interface Style</p>
         <div class="form-group">
 
-            <div class="btn-group">
-                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle"
-                    btnRadio="Light" tabindex="0" role="button">Light</label>
-                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle"
-                    btnRadio="Medium" tabindex="0" role="button">Medium</label>
-                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle"
-                    btnRadio="Dark" tabindex="0" role="button">Dark</label>
+            <div class="btn-group" role="group" aria-labelledby="interfaceStyleLabel">
+                <button type="button" class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+                    name="interfaceStyle" btnRadio="Light">Light</button>
+                <button type="button" class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+                    name="interfaceStyle" btnRadio="Medium">Medium</button>
+                <button type="button" class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+                    name="interfaceStyle" btnRadio="Dark">Dark</button>
             </div>
 
         </div>
@@ -65,9 +65,11 @@
             <label for="subscriptionType">Subscription Type</label>
             <select class="form-control" id="subscriptionType" name="subscriptionType"
                 [(ngModel)]="userSettings.subscriptionType">
-                <option *ngFor="let type of subscriptionTypes | async">
+                @for (type of (subscriptionTypes | async) ?? []; track type) {
+                <option [ngValue]="type">
                     {{ type }}
                 </option>
+                }
             </select>
         </div>
 

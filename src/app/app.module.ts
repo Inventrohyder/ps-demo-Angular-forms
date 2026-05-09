@@ -20,11 +20,11 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot(),
+    ButtonsModule,
+    BsDatepickerModule,
     BrowserAnimationsModule,
-    TimepickerModule.forRoot(),
-    RatingModule.forRoot()
+    TimepickerModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
